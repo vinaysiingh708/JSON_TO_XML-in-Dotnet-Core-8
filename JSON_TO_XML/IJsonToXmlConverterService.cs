@@ -29,9 +29,7 @@ public class JsonToXmlConverterService : IJsonToXmlConverterService
     public async Task<string> ConvertJsonToXmlAsync(string url)
     {
       var  BaseUrl = "https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty";
-        // Fetch JSON data from third-party API
-        //   var json = await _httpClient.GetFromJsonAsync<List<int>>(BaseUrl);
-        
+        // Fetch JSON data from third-party API                
         var jsonData = "https://hacker-news.firebaseio.com/v0/item/41002195.json?print=pretty";
 
         // Deserialize JSON to.NET object
