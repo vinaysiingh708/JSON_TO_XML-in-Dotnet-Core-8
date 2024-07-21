@@ -1,24 +1,12 @@
 ﻿// Services/JsonToXmlConverterService.cs
-using System;
-using System.IO;
-using System.Net.Http;
-using System.Text.Json;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
-using static System.Net.WebRequestMethods;
-
-public interface IJsonToXmlConverterService
-{
-    Task<string> ConvertJsonToXmlAsync(string url);
-}
-
+using JSON_TO_XML.Services.Interface;
+using System.Net.Http.Json;
 
 public class JsonToXmlConverterService : IJsonToXmlConverterService
 {
     private readonly HttpClient _httpClient;
-
-    
 
     public JsonToXmlConverterService(HttpClient httpClient)
     {

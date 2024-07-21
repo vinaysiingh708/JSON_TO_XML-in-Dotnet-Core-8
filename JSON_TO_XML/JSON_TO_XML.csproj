@@ -10,4 +10,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Data\JSON_TO_XML.Data.csproj" />
+    <ProjectReference Include="..\JSON_TO_XML.Services\JSON_TO_XML.Services.csproj" />
+  </ItemGroup>
+
 </Project>
