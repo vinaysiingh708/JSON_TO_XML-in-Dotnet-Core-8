@@ -21,6 +21,8 @@ public class JsonToXmlConverterService : IJsonToXmlConverterService
         var jsonData = "https://hacker-news.firebaseio.com/v0/item/41002195.json?print=pretty";
 
         // Deserialize JSON to.NET object
+        //GetFromJsonAsync is a method used in C# with the HttpClient class in .NET, specifically within the System.Net.Http.Json
+        //namespace. It simplifies the process of sending an HTTP GET request and deserializing the JSON response into a .NET object.
         var deserializeObject = await  _httpClient.GetFromJsonAsync<NewsStory>(jsonData);        
 
         // Serialize .NET object to XML
