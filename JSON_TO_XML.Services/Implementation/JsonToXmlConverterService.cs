@@ -3,27 +3,29 @@ using System.Xml;
 using System.Xml.Serialization;
 using JSON_TO_XML.Services.Interface;
 using System.Net.Http.Json;
+using Microsoft.Extensions.Configuration;
+using System.Text;
 
 public class JsonToXmlConverterService : IJsonToXmlConverterService
 {
     private readonly HttpClient _httpClient;
+    private readonly IConfiguration _configuration;
 
-    public JsonToXmlConverterService(HttpClient httpClient)
+    public JsonToXmlConverterService(HttpClient httpClient, IConfiguration configuration)
     {
         _httpClient = httpClient;
+        _configuration = configuration;
     }
 
     //  
     public async Task<string> ConvertJsonToXmlAsync(string url)
     {
-      var  BaseUrl = "https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty";
-        // Fetch JSON data from third-party API                
-        var jsonData = "https://hacker-news.firebaseio.com/v0/item/41002195.json?print=pretty";
-
+        var BaseUrl = _configuration["BaseUrl"];
+               
         // Deserialize JSON to.NET object
         //GetFromJsonAsync is a method used in C# with the HttpClient class in .NET, specifically within the System.Net.Http.Json
         //namespace. It simplifies the process of sending an HTTP GET request and deserializing the JSON response into a .NET object.
-        var deserializeObject = await  _httpClient.GetFromJsonAsync<NewsStory>(jsonData);        
+        var deserializeObject = await  _httpClient.GetFromJsonAsync<NewsStory>(BaseUrl);        
 
         // Serialize .NET object to XML
         var xmlSerializer = new XmlSerializer(typeof(NewsStory));
